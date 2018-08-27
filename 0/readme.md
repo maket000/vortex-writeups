@@ -53,7 +53,7 @@ int main() {
 
 Pretty long-winded, but it gets the job done
 
-```
+```console
 maket@anderson ~/p/v/0> gcc -o vortex0 vortex0.c
 maket@anderson ~/p/v/0> ./vortex0
 Username: vortex1 Password: Gq#qu3bF3
