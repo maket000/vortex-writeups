@@ -1,7 +1,9 @@
 ## Vortex Level 0 → Level 1
 ### Connect and Sum
 
-The first vortex level is very straightforward, you just need to connect to the vortex lab over port 5842 recieve 4 numbers, sum them, send the sum back, and then recieve ssh login credentials for the vortex1 user on the vortex lab.
+Problem page: <http://overthewire.org/wargames/vortex/vortex0.html>
+
+The first vortex level is very straightforward, you need to connect to the vortex lab over port 5842 recieve 4 numbers, sum them, send that sum back, and then recieve ssh login credentials for the vortex1 user on the vortex lab.
 
 We could do this in any language, but since this one is easy enough that we might as well make things harder on ourselves by using C.
 
