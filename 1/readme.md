@@ -135,7 +135,7 @@ print("\\" * 261)
 
 So now we're pointing at the byte we need to change, so let's add the `0xca` byte to our string to set it in order to be able to pass the `e()` conditional.  
 Remember that the default case of the program's switch statement also increments `ptr`, so we'll decrement it with another backslash in the incredibly unlikely case that `ptr` was equal to `0xcaffffff` and would have been incremented to `0xcd000000`
-We finish off our exploit string with any character that's not `\n` or `\\`, this will call e() again and create the shell we need.
+We finish off our exploit string with any character that's not `\n` or `\\`, this will call `e()` again and create the shell we need.
 
 ```python
 print("\\" * 261 + chr(0xca) + "\\" + ".")
