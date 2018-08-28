@@ -3,7 +3,7 @@
 
 Problem page: <http://overthewire.org/wargames/vortex/vortex2.html>
 
-Okay so this one is pretty staightforward, let's look at the code we need to exploit
+Okay so this one is pretty straightforward, let's look at the code we need to exploit
 
 ```C
 #include <stdlib.h>
@@ -31,7 +31,7 @@ Let's go through the [`tar` man page](https://linux.die.net/man/1/tar) to see wh
     execute ACTION on each checkpoint
 ```
 
-Alright, so we can excecute arbitrary commands every file by using these two flags, let's try it out. We'll make the first argument `/vortex/vortex2`, that way `tar` will have something to try to archive and run the checkpoint action on.
+Alright, so we can execute arbitrary commands every file by using these two flags, let's try it out. We'll make the first argument `/vortex/vortex2`, that way `tar` will have something to try to archive and run the checkpoint action on.
 
 ```console
 vortex2@vortex:~$ /vortex/vortex2 /vortex/vortex2 "--checkpoint=1" "--checkpoint-action=exec=cat /etc/vortex_pass/vortex3"

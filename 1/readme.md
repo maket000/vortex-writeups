@@ -85,7 +85,7 @@ We have two main variables we're dealing with here:
   * `buf`, a 512-length char array.
   * `ptr`, a char pointer which points to the 256th byte of `buf`
 
-The rest of the program is a while loop that reads input into the `x` variable until `EOF` is recieved. For each character of input the program does one of 3 things:
+The rest of the program is a while loop that reads input into the `x` variable until `EOF` is received. For each character of input the program does one of 3 things:
   * If a newline is inputted, `buf` is printed
   * If a backslash is inputted, `ptr` is decremented, making it point one byte earlier in memory.
   * otherwise, `e()` is called, the value of whatever `ptr` is pointing at is set equal to `x`, then `ptr` is incremented
@@ -154,12 +154,12 @@ vortex1@vortex:~$ python -c 'print("\\" * 261 + "\xca" + "\\" + "." + "\nwhoami\
 vortex1@vortex:~$
 ```
 
-Okay so nothing happenend, which is sub-optimal obviously, but not all that bad.  
-Normally before `/vortex/vortex1` exits, it prints out `"All done"`, but that didn't happen this time, so we know that we likely managed to sucessfully spawn the shell. What happened then, why didn't it run the `whoami` or `cat` commands?
+Okay so nothing happened, which is sub-optimal obviously, but not all that bad.  
+Normally before `/vortex/vortex1` exits, it prints out `"All done"`, but that didn't happen this time, so we know that we likely managed to successfully spawn the shell. What happened then, why didn't it run the `whoami` or `cat` commands?
 
 #### Fixing the Exploit
 
-Basically on the back end of Linux's syscalls, when a program calls `read()`, it tries to read `4096` bytes at a time, you can read more about the way this linux does these buffers in [this article](http://www.pixelbeat.org/programming/stdio_buffering/).  
+Basically on the back end of Linux's syscalls, when a program calls `read()`, it tries to read `4096` bytes at a time, you can read more about the way this Linux does these buffers in [this article](http://www.pixelbeat.org/programming/stdio_buffering/).  
 Anyways, the result of this behaviour is that there will be no input for the spawned shell to read, as the reads from `vortex2` will have consumed all the data. The shell will then immediately try to read, but only get an `EOF`, which the newly spawned shell interprets as an exit command.
 
 A way we can get around this issue is by writing enough data after the `"."` to make our input be of length `4096` before the commands we want the shell to run.  

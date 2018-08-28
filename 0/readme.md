@@ -3,7 +3,7 @@
 
 Problem page: <http://overthewire.org/wargames/vortex/vortex0.html>
 
-The first vortex level is very straightforward, you need to connect to the vortex lab over port 5842 recieve 4 numbers, sum them, send that sum back, and then recieve ssh login credentials for the vortex1 user on the vortex lab.
+The first vortex level is very straightforward, you need to connect to the vortex lab over port 5842 receive 4 numbers, sum them, send that sum back, and then receive ssh login credentials for the vortex1 user on the vortex lab.
 
 We could do this in any language, but since this one is easy enough that we might as well make things harder on ourselves by using C.
 
@@ -51,7 +51,7 @@ int main() {
 }
 ```
 
-Pretty long-winded, but it gets the job done
+Pretty long-winded, but it gets the job done.
 
 ```console
 maket@anderson ~/p/v/0> gcc -o vortex0 vortex0.c
